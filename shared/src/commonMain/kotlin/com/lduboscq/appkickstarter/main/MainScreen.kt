@@ -23,25 +23,6 @@ import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import com.lduboscq.appkickstarter.ui.Image
 
-//sealed class AllScreens{
-//    data class Home(val name:String):AllScreens()
-//    data class About(val count:Int):AllScreens()
-//}
-//@Composable
-//fun screenRouter(screen: AllScreens){
-//    val navigator = LocalNavigator.currentOrThrow
-//    when(screen){
-//        is AllScreens.Home -> {navigator.push(HomeScreen(name = screen.name))}
-//        is AllScreens.About -> {
-//            if (screen.count == 0) {
-//                navigator.push(AboutScreen(message = "Welcome"))
-//            } else {
-//                navigator.push(AboutScreen(message = "welcome back"))
-//            }
-//        }
-//    }
-//}
-
 internal class MainScreen :Screen {
 
     @OptIn(ExperimentalResourceApi::class)

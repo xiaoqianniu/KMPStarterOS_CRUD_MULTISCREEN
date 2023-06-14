@@ -51,7 +51,6 @@ fun myLoginForm(count:Int, setCount:(Int)-> Unit) {
     var showRegisterForm by remember { mutableStateOf(false) }
     var isTextVisible by remember { mutableStateOf(false) }
 
-
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,

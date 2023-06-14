@@ -4,8 +4,11 @@ import cafe.adriel.voyager.core.screen.Screen
 
 sealed class AllScreens {
     object Home : AllScreens()
-    object About:AllScreens()
-    object Contact:AllScreens()
+    object Login : AllScreens()
+    object Contact : AllScreens()
+    object ItemList : AllScreens()
+
+    object Profile :AllScreens()
 }
 
 fun ScreenRouter(screen: AllScreens): Screen {
@@ -13,11 +16,16 @@ fun ScreenRouter(screen: AllScreens): Screen {
         is AllScreens.Home ->
             MainScreen()
 
-        is AllScreens.About ->
-            AboutScreen()
+        is AllScreens.Login ->
+            LoginScreen()
 
         is AllScreens.Contact ->
             ContactScreen()
 
+        is AllScreens.ItemList ->
+            ItemListScreen()
+
+        is AllScreens.Profile->
+            ProfileScreen()
     }
 }

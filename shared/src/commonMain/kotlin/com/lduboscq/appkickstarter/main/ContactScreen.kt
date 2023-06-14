@@ -12,7 +12,10 @@ internal class ContactScreen: Screen {
             topBar = { MyTopBar() }
                 ) {
             Text("please contact us")
+
         }
+
+
     }
 
 }

@@ -58,10 +58,11 @@ fun loginInfoDisplay(email: String, password: String, onBackClicked: () -> Unit)
                 Text("Back", fontSize = 20.sp)
             }
             Button(onClick={
-                navigator.push(ScreenRouter(AllScreens.About))
+                navigator.push(ScreenRouter(AllScreens.Login))
             }) {
                Text("Home")
             }
+
         }
     }
 }
