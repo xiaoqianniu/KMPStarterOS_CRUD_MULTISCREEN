@@ -5,12 +5,13 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
 
-internal class ContactScreen: Screen {
+internal class ContactScreen : Screen {
     @Composable
     override fun Content() {
-        Scaffold (
-            topBar = { MyTopBar() }
-                ) {
+        Scaffold(
+            topBar = { MyTopBar() },
+            bottomBar = { MyBottomBar() }
+        ) {
             Text("please contact us")
 
         }

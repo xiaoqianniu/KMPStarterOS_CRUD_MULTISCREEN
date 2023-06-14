@@ -17,6 +17,11 @@ fun MyBottomBar() {
     val navigator = LocalNavigator.currentOrThrow
     BottomAppBar {
         Button(onClick = {
+            navigator.push(ScreenRouter(AllScreens.Home))
+        }) {
+            Text("Home")
+        }
+        Button(onClick = {
             navigator.push(ScreenRouter(AllScreens.ItemList))
         }) {
             Text("ItemList")
