@@ -11,7 +11,7 @@ import com.lduboscq.appkickstarter.main.MainScreen
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
 public fun MainApp() {
-    Navigator(MainScreen()) { navigator ->
+    Navigator(FrogScreen()) { navigator ->
         SlideTransition(navigator)
     }
 }
