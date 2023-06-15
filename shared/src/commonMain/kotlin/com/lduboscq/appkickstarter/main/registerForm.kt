@@ -25,6 +25,7 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,6 +38,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import cafe.adriel.voyager.core.model.rememberScreenModel
+import com.lduboscq.appkickstarter.FrogRepositoryRealmRealmLocal
+import com.lduboscq.appkickstarter.FrogScreenModel
 
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 import com.lduboscq.appkickstarter.ui.Image
@@ -44,6 +48,7 @@ import com.lduboscq.appkickstarter.ui.Image
 @OptIn(ExperimentalResourceApi::class)
 @Composable
 fun registerForm(onDismiss: () -> Unit, onDataSubmitted: (String, String) -> Unit,onSubmit:(Int)->Unit,count:Int) {
+
 
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -158,4 +163,6 @@ fun registerForm(onDismiss: () -> Unit, onDataSubmitted: (String, String) -> Uni
     }
 
 }
+
+
 

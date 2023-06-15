@@ -5,24 +5,18 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.currentCompositeKeyHash
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
-import com.lduboscq.appkickstarter.list.ListScreenContent
-import com.lduboscq.appkickstarter.list.PersonListScreenModel
-import io.realm.kotlin.ext.asFlow
 
 class FrogScreen : Screen {
     @Composable
     override fun Content() {
-        val screenModel = rememberScreenModel() { FrogScreenModel(FrogRepositoryLocal()) }
+        val screenModel = rememberScreenModel() { FrogScreenModel(FrogRepositoryRealmRealmLocal()) }
         val state by screenModel.state.collectAsState()
         var frogName by remember { mutableStateOf("") }
 

@@ -8,9 +8,8 @@ import io.realm.kotlin.mongodb.Credentials
 import io.realm.kotlin.mongodb.exceptions.SyncException
 import io.realm.kotlin.mongodb.sync.SyncConfiguration
 import io.realm.kotlin.mongodb.sync.SyncSession
-import io.realm.kotlin.types.RealmUUID
 
-class FrogRepositorySync() : FrogRepository() {
+class FrogRepositoryRealmSync() : FrogRepositoryRealm() {
 
     private val appServiceInstance by lazy {
         val configuration =

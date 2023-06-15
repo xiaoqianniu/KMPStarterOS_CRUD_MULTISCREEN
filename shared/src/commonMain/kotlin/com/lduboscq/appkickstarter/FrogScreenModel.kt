@@ -1,11 +1,11 @@
 package com.lduboscq.appkickstarter
 
-import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.StateScreenModel
 import cafe.adriel.voyager.core.model.coroutineScope
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class FrogScreenModel(private val repository: FrogRepositoryLocal)
+class FrogScreenModel(private val repository: FrogRepositoryRealm)
     : StateScreenModel<FrogScreenModel.State>(State.Init) {
 
     sealed class State {
@@ -13,7 +13,7 @@ class FrogScreenModel(private val repository: FrogRepositoryLocal)
         object Loading : State()
         sealed class Result: State() {
             class SingleResult(val frogData: FrogData?) : Result()
-            class ListResult(val frogList: List<Frog>?) : Result()
+            class MultipleResult(val frogDatas: Flow<FrogData>?) : Result()
         }
     }
 
