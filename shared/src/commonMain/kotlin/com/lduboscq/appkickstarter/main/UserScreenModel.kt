@@ -49,4 +49,29 @@ class UserScreenModel(private val repository: UserRepositoryRealm) :
             )
         }
     }
+
+    fun deleteUser(userName: String) {
+        coroutineScope.launch {
+            mutableState.value = State.Loading
+
+            mutableState.value = State.Result.SingleResult(
+                repository.deleteOneUser(userName)
+            )
+        }
+    }
+
+    fun updatePassword(userName: String, password: String, confirmPassword: String) {
+        coroutineScope.launch {
+            mutableState.value = State.Loading
+
+            mutableState.value = State.Result.SingleResult(
+                repository.updateUser(
+                    userName,
+                    password,
+                    confirmPassword
+                )
+            )
+        }
+    }
+
 }

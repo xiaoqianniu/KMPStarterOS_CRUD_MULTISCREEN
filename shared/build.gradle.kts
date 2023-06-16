@@ -70,6 +70,7 @@ kotlin {
                 api("cafe.adriel.voyager:voyager-transitions:$voyagerVersion")
                 implementation("cafe.adriel.voyager:voyager-koin:$voyagerVersion")
                 implementation("io.realm.kotlin:library-sync:1.9.1")
+
             }
         }
         val androidMain by getting {

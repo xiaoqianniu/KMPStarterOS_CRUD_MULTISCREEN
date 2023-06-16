@@ -111,10 +111,25 @@ class UserRegisterScreen : Screen {
                 Button(onClick = { screenModel.getUser(userName,email,password,confirmPassword) }) {
                     Text("Get User")
                 }
+                Button(onClick = { screenModel.deleteUser(userName) }) {
+                    Text("Delete")
+                }
+
+            }
+            if(!userName.isNullOrEmpty() && !password.isNullOrEmpty() && !confirmPassword.isNullOrEmpty()){
+                Button(onClick = { screenModel.updatePassword(userName,password,confirmPassword) }) {
+                    Text("Update")
+                }
             }
 
-            if (state is UserScreenModel.State.Result.SingleResult) { Text("The results of the action are:")
-                UserCard(userData =(state as UserScreenModel.State.Result.SingleResult).userData)
+            if (state is UserScreenModel.State.Result.SingleResult) {
+                val userData = (state as UserScreenModel.State.Result.SingleResult).userData
+                Text("The results of the action are:")
+                if (userData != null) {
+                    UserCard(userData = userData)
+                } else {
+                    Text("No user data available.")
+                }
             }
         }
     }

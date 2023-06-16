@@ -11,4 +11,8 @@ interface UserRepository {
     ): UserData?
 
     suspend fun addUser(userData: UserData): UserData?
+
+    suspend fun deleteOneUser(userName: String):UserData?
+
+    suspend fun updateUser(userName: String,password: String,confirmPassword: String):UserData?
 }

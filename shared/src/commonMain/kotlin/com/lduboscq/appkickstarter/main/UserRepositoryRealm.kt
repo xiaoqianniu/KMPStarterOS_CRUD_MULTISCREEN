@@ -1,7 +1,9 @@
 package com.lduboscq.appkickstarter.main
 
 import com.lduboscq.appkickstarter.Frog
+import com.lduboscq.appkickstarter.FrogData
 import io.realm.kotlin.Realm
+import io.realm.kotlin.ext.query
 import io.realm.kotlin.types.RealmUUID
 
 abstract class UserRepositoryRealm : UserRepository {
@@ -65,5 +67,59 @@ abstract class UserRepositoryRealm : UserRepository {
         }
 
         return convertToUserData(newUser)
+    }
+
+    override suspend fun updateUser(userName: String,password: String,confirmPassword: String): UserData? {
+        if (!this::realm.isInitialized) {
+            setupRealmSync()
+        }
+        var userData: UserData? = null
+
+
+        try {
+            val findUser: User? =
+                realm.query<User>(User::class, "username = \"$userName\"").first().find()
+           //update one object asynchronously
+            realm.write {
+                if (findUser != null) {
+                    findLatest(findUser)!!.password = findLatest(findUser)!!.password
+                    findLatest(findUser)!!.confirmPassword = findLatest(findUser)!!.confirmPassword
+                }
+            }
+            userData = convertToUserData(findUser)
+        } catch (e: Exception) {
+            print(e.message)
+        }
+        return userData
+    }
+    override suspend fun deleteOneUser(userName: String): UserData? {
+        if (!this::realm.isInitialized) {
+            setupRealmSync()
+        }
+        var user2: UserData? = null
+
+
+        try {
+            val findUser: User? =
+                realm.query<User>(User::class, "username = \"$userName\"").first().find()
+            realm.write {
+                if (findUser != null) {
+                    user2 = UserData(
+                        id = findLatest(findUser)!!._id,
+                        username = findLatest(findUser)!!.username,
+                        password = findLatest(findUser)!!.password,
+                        confirmPassword = findLatest(findUser)!!.confirmPassword,
+                        user = null
+                    )
+                    findLatest(findUser)
+                        ?.also { delete(it) }
+                }
+
+            }
+        } catch (e: Exception) {
+            print(e.message)
+        }
+        return user2
+
     }
 }
