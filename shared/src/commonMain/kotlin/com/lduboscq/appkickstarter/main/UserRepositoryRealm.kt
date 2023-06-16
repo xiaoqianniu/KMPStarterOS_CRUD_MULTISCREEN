@@ -82,8 +82,8 @@ abstract class UserRepositoryRealm : UserRepository {
            //update one object asynchronously
             realm.write {
                 if (findUser != null) {
-                    findLatest(findUser)!!.password = findLatest(findUser)!!.password
-                    findLatest(findUser)!!.confirmPassword = findLatest(findUser)!!.confirmPassword
+                    findLatest(findUser)!!.password = password
+                    findLatest(findUser)!!.confirmPassword = confirmPassword
                 }
             }
             userData = convertToUserData(findUser)
